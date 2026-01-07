@@ -15,23 +15,26 @@
  *
  * For more configuration options, visit:
  * https://github.com/aziontech/lib/tree/main/packages/config
- */
+ 
+*/
 
-export default {
+import { defineConfig } from 'azion'
+
+export default defineConfig({
   build: {
     preset: 'typescript',
-    entry: './src/index.ts',
-    polyfills: true
+    worker: true,
+    entry: ['./src/index.ts']
   },
   functions: [
     {
-      name: 'test-mcp',
-      path: './functions/index.js'
+      name: 'mcp-resources-demo',
+      path: './functions/src/index.js'
     }
   ],
   applications: [
     {
-      name: 'test-mcp',
+      name: 'mcp-resources-demo',
       rules: {
         request: [
           {
@@ -52,7 +55,7 @@ export default {
               {
                 type: 'run_function',
                 attributes: {
-                  value: 'test-mcp'
+                  value: 'mcp-resources-demo'
                 }
               }
             ]
@@ -61,15 +64,15 @@ export default {
       },
       functionsInstances: [
         {
-          name: 'test-mcp',
-          ref: 'test-mcp'
+          name: 'mcp-resources-demo',
+          ref: 'mcp-resources-demo'
         }
       ]
     }
   ],
   workloads: [
     {
-      name: 'test-mcp',
+      name: 'mcp-resources-demo',
       active: true,
       infrastructure: 1,
       protocols: {
@@ -82,17 +85,17 @@ export default {
       },
       deployments: [
         {
-          name: 'test-mcp',
+          name: 'mcp-resources-demo',
           current: true,
           active: true,
           strategy: {
             type: 'default',
             attributes: {
-              application: 'test-mcp'
+              application: 'mcp-resources-demo'
             }
           }
         }
       ]
     }
   ]
-}
+})
