@@ -1,61 +1,65 @@
-# Azion MCP Server Template
+# Azion MCP Resources Demo
 
-A Model Context Protocol (MCP) server deployed on Azion Edge Computing Network.
+This repository demonstrates an Azion implementation of **MCP Resources** (Model Context Protocol) running on the **Azion Web Platform**.
 
-## Features
+## Purpose
 
-This MCP server provides:
+Show how to implement and expose **Resources** in an MCP server and deploy it globally using Azion.
 
-A simple calculation tool that can add, subtract, multiply, and divide two numbers.
+## Why Azion
 
-## Installation
+Azion is the best platform to deploy this kind of project because it combines:
+
+- **Edge runtime** to run MCP servers close to users.
+- **Global network** for low latency and scalability.
+- **Simple developer workflow** using Azion CLI (`azion dev`, `azion build`, `azion deploy`).
+
+## Clone, customize, and deploy to Azion
 
 ### Prerequisites
 
 - Azion CLI installed: [how to download](https://www.azion.com/en/documentation/products/azion-cli/overview/)
+- Node.js installed (LTS recommended)
 
-### Setup
+### 1) Clone
 
-1. Clone this repository
 ```bash
-git clone https://github.com/your-username/azion-mcp-server.git
-cd azion-mcp-server
+git clone <YOUR_REPO_URL>
+cd mcp-resources
 ```
 
-2. Install dependencies
+### 2) Install dependencies
+
 ```bash
-yarn install
-# or
 npm install
+# or
+yarn install
 ```
 
-3. Build the server
-```bash
-azion build
-```
+### 3) Customize
 
-## Usage
+- Add or update resources in `src/core/resources.ts`.
+- Update the server wiring in `src/core/server.ts` if you introduce new capabilities.
 
-### Running the server
+### 4) Run locally
 
 ```bash
 azion dev
 ```
 
+### 5) Build and deploy to Azion
 
-### Integration with other MCP clients
+```bash
+azion build
+azion deploy
+```
 
-For other MCP clients, follow their documentation for adding external MCP servers, providing the path to the built server file and the environment variables needed.
+## Integrating with MCP clients
 
-## Available Tools
+Follow your MCP client documentation to add an external MCP server. You’ll typically provide the server endpoint (or built artifact path, depending on the client) and any required environment variables.
 
-- `calculator` - A simple calculator to sum, subtract, multiply and divide two numbers
+## Get started with Azion ($300 credits)
 
-## Development
+Create your Azion account and start deploying MCP projects on the edge with **$300 in credits**:
 
-
-### Extending the server
-
-To add new Azion functionality:
-
-1. Add new tools in `src/core/tools.ts`
+<https://console.azion.com/signup/>
