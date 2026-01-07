@@ -4,9 +4,9 @@ import { resources } from "./resources";
 export const getServer = () => {
   const server = new McpServer(
     {
-      name: "mcp-resources-demo",
-      title: "MCP Resources Demo",
-      description: "MCP Resources Demo deployed at Azion",
+      name: "restaurante-dev",
+      title: "Restaurante Dev",
+      description: "Restaurante Dev deployed at Azion",
       version: "1.0.0",
     },
     { capabilities: { logging: {} } }
