@@ -4,7 +4,6 @@ interface Resource {
   description: string;
   resource: string;
   updated_at: string;
-  restaurante: string;
   callback: () => Promise<any>;
 }
 
@@ -289,7 +288,7 @@ export const resources: Resource[] = [
     description: "Restrições Alimentares",
     resource: "menu://restricoes-alimentares",
     updated_at: "2025-01-09T11:00:00Z",
-    name: "Boteco do Dev",
+    name: "restricoes-alimentares",
     callback: async () => ({
       aviso_legal:
         "Nossos pratos são preparados em cozinha compartilhada. Informe alergias graves ao atendente.",
