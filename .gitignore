@@ -25,3 +25,6 @@ yarn-error.log*
 .edge/
 .vulcan
 .open-next
+
+src/azion-*.temp.ts
+src/azion-*.temp.js
