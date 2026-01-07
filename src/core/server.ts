@@ -1,5 +1,6 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { resources } from "./resources";
+import { tools } from "./tools";
 
 export const getServer = () => {
   const server = new McpServer(
@@ -23,7 +24,9 @@ export const getServer = () => {
       },
       async (uri) => {
         const data = await resource.callback();
-       
+
+        console.log("Resource called: ", resource.name);
+
         return {
           contents: [
             {
@@ -36,5 +39,21 @@ export const getServer = () => {
       }
     );
   });
+
+  tools.forEach((tool) => {
+    server.registerTool(
+      tool.name,
+      {
+        title: tool.title,
+        description: tool.description,
+        inputSchema: tool.inputSchema,
+      },
+      () => {
+        console.log("Tool called: ", tool.name);
+        return tool.callback()
+      }
+    );
+  });
+
   return server;
 };
