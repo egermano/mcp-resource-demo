@@ -5,9 +5,9 @@ import { tools } from "./tools";
 export const getServer = () => {
   const server = new McpServer(
     {
-      name: "restaurante-dev",
-      title: "Restaurante Dev",
-      description: "Restaurante Dev deployed at Azion",
+      name: "restaurant-dev",
+      title: "Restaurant Dev",
+      description: "Restaurant Dev deployed at Azion",
       version: "1.0.0",
     },
     { capabilities: { logging: {} } }
@@ -25,7 +25,7 @@ export const getServer = () => {
       async (uri) => {
         const data = await resource.callback();
 
-        console.log("Resource called: ", resource.name);
+        console.log("[restaurant-dev MCP]", "Resource called: ", resource.name);
 
         return {
           contents: [
@@ -48,10 +48,7 @@ export const getServer = () => {
         description: tool.description,
         inputSchema: tool.inputSchema,
       },
-      () => {
-        console.log("Tool called: ", tool.name);
-        return tool.callback()
-      }
+      tool.callback
     );
   });
 

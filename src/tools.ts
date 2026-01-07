@@ -15,13 +15,19 @@ export const tools: Tool[] = [
     title: "Greeting tool",
     description: "A simple greeting tool",
     inputSchema: z.object({ name: z.string().describe("Name to greet") }),
-    callback: async ({ name }: { name: string }): Promise<CallToolResult> => ({
-      content: [
-        {
-          type: "text",
-          text: `Welcome to the dev restaurant, ${name}!`,
-        },
-      ],
-    }),
+    callback: async (input: { name: string }): Promise<CallToolResult> => {
+      console.log("[restaurant-dev MCP]", "Greeting tool called", input);
+      
+      const { name } = input;
+
+      return {
+        content: [
+          {
+            type: "text",
+            text: `Welcome to the dev restaurant, ${name}!`,
+          },
+        ],
+      };
+    },
   },
 ];
